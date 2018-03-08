@@ -27,7 +27,11 @@ function createProductHTML(product) {
 
 drawProducts(data);
 
-function addToCart() {
+function addToCart(id) {
+  const buttonChange = event.target;
+  increaseCounter();
+  changeButtonStatus(buttonChange);
+  const listShopping = [];
   /* cuando agrego a carrito, tengo que:
   1) Incrementar en uno mi contador del menu
   2) Guardar mi producto en algun lugar
@@ -37,6 +41,8 @@ function addToCart() {
 }
 
 function removeFromCart() {
+
+
   /* cuando agrego a carrito, tengo que:
   1) Decrementar en uno mi contador del menu
   2) Borrar mi producto de algun lugar
@@ -46,16 +52,30 @@ function removeFromCart() {
 }
 
 function increaseCounter() {
+  
+  let newCounter = parseInt(buttonaddToCart.innerText);// Contenido span
+   newCounter += 1; // Nuevo contador
+   buttonaddToCart.innerText= newCounter;
   /* como accedemos al HTML del contador
   y como lo incrementamos*/
+  decreaseCounter(newCounter)
 }
 
-function decreaseCounter() {
-  /* como accedemos al HTML del contador
-  y como lo incrementamos*/
+function decreaseCounter(buttonaddToCart) {
+  console.log(buttonaddToCart);
+  
 }
 
-function changeButtonStatus(button) {
+function changeButtonStatus(buttonCounter) {
+  const buttonCounter = document.getElementById('counterItems');
+  // let button =  buttonChange.innerText;
+  if (buttonChange.innerText == 'Agregar a carrito'){
+    increaseCounter(buttonCounter);
+    buttonChange.innerText = 'Quitar al carrito';
+  }else{
+    buttonChange.innerText = 'Agregar a carrito'
+    decreaseCounter(buttonCounter);
+  }
   /* esta funcion deberia recibir un boton y
   cambiar su estatus
     Si el boton esta en agregar al carrito
